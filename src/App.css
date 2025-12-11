@@ -1,0 +1,573 @@
+::-webkit-scrollbar {
+    display: none;
+}
+
+html, body {
+    scrollbar-width: none;  /* Firefox */
+    -ms-overflow-style: none;  /* IE and Edge */
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+/* Container Utama: Membagi layar jadi 2 (Kiri 50%, Kanan 50%) */
+.login-container {
+  display: flex;
+  height: 100vh; /* Full layar laptop */
+  width: 100%; /* Gunakan 100% agar tidak menyebabkan overflow karena scrollbar */
+  max-width: 100%;
+  overflow-x: hidden; /* Safety: cegah horizontal scroll */
+}
+
+/* --- BAGIAN KIRI (GAMBAR) --- */
+.login-left {
+  flex: 1; /* Ambil 50% lebar */
+  background-image: url('./photos/login\ &\ register.png');
+  background-size: cover;
+  background-position: center;
+  position: relative;
+  display: flex;
+  align-items: center; /* Center vertikal */
+  justify-content: center; /* Center horizontal */
+  padding: 60px;
+}
+
+/* Efek gelap sedikit biar teks terbaca + BLUR HANYA BACKGROUND */
+.login-left::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0; right: 0; bottom: 0;
+  background: linear-gradient(to top, rgba(0,0,0,0.7), transparent);
+  backdrop-filter: blur(3px); /* Blur hanya pada area ini, teks tetap jelas */
+}
+
+.overlay-text {
+  position: relative;
+  color: white;
+  z-index: 1;
+  max-width: 80%;
+  text-align: center; /* Center teks secara horizontal */
+  letter-spacing: 0.3px;
+}
+
+.overlay-text h1 {
+  font-size: 2.5rem;
+  margin-bottom: 15px;
+}
+
+.overlay-text p {
+  font-size: 1rem;
+  line-height: 1.5;
+  opacity: 0.9;
+}
+
+/* --- BAGIAN KANAN (FORM) --- */
+.login-right {
+  flex: 1; /* Ambil 50% lebar */
+  display: flex;
+  justify-content: center; /* Tengah horizontal */
+  align-items: center; /* Tengah vertikal */
+  background-color: white;
+  padding: 40px;
+}
+
+.form-box {
+  width: 100%;
+  max-width: 400px; /* Batasi lebar form biar gak kegedean */
+}
+
+.form-box h2 {
+  text-align: center;
+  font-size: 2rem;
+  margin-bottom: 30px;
+  color: #333;
+}
+
+/* Styling Input */
+.input-group {
+  margin-bottom: 20px;
+}
+
+.input-group label {
+  display: block;
+  margin-bottom: 8px;
+  font-weight: 500;
+  font-size: 0.9rem;
+  color: #555;
+}
+
+.input-group input {
+  width: 100%;
+  padding: 12px 15px;
+  border: 1px solid #ddd;
+  background-color: #f9f9f9; /* Warna abu muda sesuai desain */
+  border-radius: 8px;
+  font-size: 1rem;
+  outline: none;
+  color: #333; /* Pastikan teks input gelap supaya terlihat di background terang */
+  caret-color: #333; /* Pastikan kursor (caret) terlihat */
+}
+
+.input-group input::placeholder {
+  color: #9aa0a6; /* Placeholder lebih gelap agar terbaca */
+}
+
+.input-group input:focus {
+  border-color: #e67e22; /* Warna orange saat diklik */
+  background-color: white;
+  color: #333;
+  caret-color: #333;
+}
+
+.terms span {
+  color: #e67e22;
+  font-weight: bold;
+  text-align: justify;
+}
+
+/* Tombol Orange */
+.btn-primary {
+  width: 100%;
+  padding: 14px;
+  background-color: #e67e22; /* Sesuai warna tombol di Figma */
+  color: white;
+  border: none;
+  border-radius: 8px;
+  font-size: 1rem;
+  font-weight: bold;
+  cursor: pointer;
+  margin-top: 10px;
+  transition: 0.3s;
+}
+
+.btn-primary:hover {
+  background-color: #d35400;
+}
+
+/* Checkbox Terms */
+.terms {
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+  font-size: 0.8rem;
+  color: #777;
+  margin-bottom: 20px;
+}
+
+#terms-register {
+  accent-color: #e67e22;
+}
+
+.switch-page {
+  margin-top: 20px;
+  text-align: center;
+  font-size: 0.9rem;
+  color: #666;
+}
+
+.switch-page span {
+  color: #e67e22;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+/* Role selector styles */
+.role-group {
+  display: flex;
+  gap: 16px;
+  align-items: flex-start;
+  margin-bottom: 12px;
+  flex-wrap: wrap;
+  width: 100%; /* make the role group span the form width */
+}
+
+.role-group input[type="radio"] {
+  /* hide native radio */
+  display: none;
+}
+
+.role-option {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  flex: 1 1 0; /* allow cards to grow/shrink and share available space */
+  min-width: 0; /* prevent overflow */
+  padding: 14px 18px;
+  border-radius: 8px;
+  border: 1px solid #e6e6e6;
+  background: #fff;
+  cursor: pointer;
+  box-shadow: 0 1px 0 rgba(0,0,0,0.03);
+  transition: box-shadow 0.15s ease, border-color 0.15s ease, transform 0.08s;
+}
+
+.role-option .role-title {
+  font-weight: 600;
+  color: #333;
+}
+
+.role-option .role-dot {
+  width: 14px;
+  height: 14px;
+  border-radius: 50%;
+  background: #e9ecef; /* default gray */
+  border: 2px solid #f1f1f1;
+}
+
+.role-option.selected {
+  border-color: #e67e22;
+  box-shadow: 0 6px 18px rgba(230,126,34,0.12);
+  transform: translateY(-1px);
+}
+
+.role-option.selected .role-dot {
+  background: #e67e22; /* orange filled dot */
+  border-color: #e67e22;
+}
+
+.role-help {
+  width: 100%;
+  font-size: 1rem;
+  color: #777;
+  margin-top: 5px;
+  text-align: justify;
+}
+
+/* BAGIAN DASHBOARD */
+/* --- DASHBOARD STYLES --- */
+
+/* Navbar */
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 20px 50px;
+  background-color: white;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+  position: sticky;
+  top: 0;
+  z-index: 100;
+}
+
+.logo {
+  font-weight: 900;
+  font-size: 1.5rem;
+  color: #333;
+}
+
+.logo-atas {
+  height: 70px;
+  width: auto;
+  margin-top: 5px;
+}
+
+.nav-links {
+  display: flex;
+  list-style: none;
+  gap: 30px;
+  padding-right: 850px;
+}
+
+.nav-links li {
+  cursor: pointer;
+  color: #555;
+  font-weight: 500;
+  transition: 0.3s;
+}
+
+.nav-links li:hover {
+  color: #e67e22;
+}
+.btn-logout {
+  padding: 10px 20px;
+  background-color: #e74c3c; /* Merah untuk logout */
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+/* Hero Section */
+.hero {
+  background-image: url('./photos/background.png');
+  background-size: cover;
+  background-position: center;
+  height: 500px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  color: white;
+  padding: 0 20px;
+}
+
+.hero h1 {
+  font-size: 2.5rem;
+  margin-bottom: 20px;
+}
+
+.search-bar {
+  margin-top: 30px;
+  background: white;
+  padding: 10px;
+  border-radius: 50px;
+  display: flex;
+  width: 100%;
+  max-width: 600px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.search-bar input {
+  flex: 1;
+  border: none;
+  padding: 10px 20px;
+  outline: none;
+  border-radius: 50px;
+}
+
+.btn-search {
+  background-color: #e67e22;
+  color: white;
+  border: none;
+  padding: 10px 30px;
+  border-radius: 50px;
+  cursor: pointer;
+  font-weight: bold;
+}
+
+/* Stats Section */
+.stats {
+  display: flex;
+  justify-content: space-around;
+  padding: 60px 50px;
+  text-align: center;
+  background-color: #ffffff; /* Warna cream tipis */
+  flex-direction: column;
+  align-items: center;
+  gap: 30px;
+}
+
+.stats-content {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-around;
+  margin-top: 20px;
+  width: 100%;
+  gap: 50px;
+}
+
+.start-head h2 {
+  color: #e67e22;
+  display: flex;
+  flex-direction: row;
+}
+
+.stat-item h3 {
+  font-size: 2rem;
+  color: #e67e22;
+  margin-bottom: 10px;
+}
+
+.stat-item p {
+  color: #666;
+  font-size: 0.9rem;
+  max-width: 200px;
+}
+
+/* Property Section */
+.property-section {
+  padding: 50px;
+  text-align: center;
+  background-color: #ffffff;
+}
+
+.property-section h2 {
+  margin-bottom: 40px;
+  color: #e67e22;
+}
+
+.property-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); /* Responsif Grid */
+  gap: 30px;
+}
+
+.property-card {
+  border: 1px solid #eee;
+  border-radius: 12px;
+  overflow: hidden;
+  text-align: left;
+  transition: 0.3s;
+  box-shadow: 3px 3px 5px rgba(0,0,0,0.05);
+  position: relative;
+}
+
+.property-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+}
+
+.card-img {
+  width: 100%;
+  height: 180px;
+  object-fit: cover;
+  display: block;
+}
+
+.card-content {
+  padding: 20px;
+}
+
+.badge {
+  position: absolute;
+  top: 15px;
+  left: 15px;
+  background-color: #e67e22;
+  color: white;
+  padding: 5px 10px;
+  border-radius: 5px;
+  font-size: 0.8rem;
+  font-weight: bold;
+  z-index: 10;
+}
+
+.card-content h3 { margin: 0 0 5px; }
+.location { color: #888; font-size: 0.9rem; margin-bottom: 10Apppx; }
+.price { color: #e74c3c; font-weight: bold; font-size: 1.1rem; margin-bottom: 15px; }
+
+.card-specs {
+  display: flex;
+  justify-content: space-between;
+  font-size: 0.8rem;
+  color: #555;
+  border-top: 1px solid #eee;
+  padding-top: 15px;
+}
+
+/* --- FOOTER STYLES --- */
+.footer {
+  background-color: #000000; /* Warna latar gelap (Dark Brown/Black) */
+  color: #e0e0e0; /* Warna teks abu terang */
+  padding-top: 60px;
+}
+
+.footer-container {
+  display: flex;
+  justify-content: space-between; /* Agar tersebar rata 4 kolom */
+  flex-wrap: wrap; /* Supaya aman di layar kecil */
+  padding: 0 60px 40px; /* Padding kiri-kanan */
+  gap: 40px;
+  max-width: 1400px;
+  margin: 0 auto;
+}
+
+/* Style Per Kolom */
+.footer-col {
+  min-width: 200px;
+}
+
+.brand-col {
+  flex: 1.5; /* Kolom pertama lebih lebar sedikit */
+  padding-right: 20px;
+}
+
+/* Typography Footer */
+.footer-logo {
+  width: 150px;
+  margin-bottom: 20px;
+  filter: brightness(10); /* Trik biar logo hitam jadi putih (opsional) */
+}
+
+.footer-desc {
+  font-size: 0.9rem;
+  line-height: 1.6;
+  margin-bottom: 20px;
+  color: #aaa;
+}
+
+.footer-col h4 {
+  color: white;
+  margin-bottom: 20px;
+  font-size: 1.1rem;
+  font-weight: 600;
+}
+
+.footer-col ul {
+  list-style: none;
+  padding: 0;
+}
+
+.footer-col ul li {
+  margin-bottom: 12px;
+  font-size: 0.95rem;
+  color: #bbb;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.footer-col ul li:hover {
+  color: #e67e22; /* Warna orange saat di-hover */
+  transform: translateX(5px);
+}
+
+/* Social Icons */
+.social-icons {
+  display: flex;
+  gap: 15px;
+}
+
+.social-icons img {
+  width: 20px;
+  height: 20px;
+  opacity: 0.7;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.social-icons img:hover {
+  opacity: 1;
+  transform: scale(1.1);
+}
+
+/* Subscribe Form */
+.subscribe-col p {
+  font-size: 0.9rem;
+  color: #aaa;
+  margin-bottom: 20px;
+}
+
+.subscribe-form {
+  display: flex;
+  background: white;
+  border-radius: 6px;
+  overflow: hidden;
+  padding: 2px;
+}
+
+.subscribe-form input {
+  flex: 1;
+  border: none;
+  padding: 10px 15px;
+  outline: none;
+  font-size: 0.9rem;
+}
+
+.subscribe-form button {
+  background-color: white;
+  color: #333;
+  border: none;
+  padding: 10px 20px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.subscribe-form button:hover {
+  color: #e67e22;
+}
