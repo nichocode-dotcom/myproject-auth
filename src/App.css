@@ -180,6 +180,10 @@ html, body {
   margin-bottom: 20px;
 }
 
+#terms-login {
+  accent-color: #e67e22;
+}
+
 #terms-register {
   accent-color: #e67e22;
 }
