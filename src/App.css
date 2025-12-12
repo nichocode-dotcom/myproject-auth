@@ -3,8 +3,8 @@
 }
 
 html, body {
-    scrollbar-width: none;  /* Firefox */
-    -ms-overflow-style: none;  /* IE and Edge */
+    scrollbar-width: none;  
+    -ms-overflow-style: none;  
 }
 
 * {
@@ -14,35 +14,32 @@ html, body {
   font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
 
-/* Container Utama: Membagi layar jadi 2 (Kiri 50%, Kanan 50%) */
 .login-container {
   display: flex;
-  height: 100vh; /* Full layar laptop */
-  width: 100%; /* Gunakan 100% agar tidak menyebabkan overflow karena scrollbar */
+  height: 100vh; 
+  width: 100%; 
   max-width: 100%;
-  overflow-x: hidden; /* Safety: cegah horizontal scroll */
+  overflow-x: hidden; 
 }
 
-/* --- BAGIAN KIRI (GAMBAR) --- */
 .login-left {
-  flex: 1; /* Ambil 50% lebar */
+  flex: 1; 
   background-image: url('./photos/login\ &\ register.png');
   background-size: cover;
   background-position: center;
   position: relative;
   display: flex;
-  align-items: center; /* Center vertikal */
-  justify-content: center; /* Center horizontal */
+  align-items: center; 
+  justify-content: center; 
   padding: 60px;
 }
 
-/* Efek gelap sedikit biar teks terbaca + BLUR HANYA BACKGROUND */
 .login-left::before {
   content: '';
   position: absolute;
   top: 0; left: 0; right: 0; bottom: 0;
   background: linear-gradient(to top, rgba(0,0,0,0.7), transparent);
-  backdrop-filter: blur(3px); /* Blur hanya pada area ini, teks tetap jelas */
+  backdrop-filter: blur(3px); 
 }
 
 .overlay-text {
@@ -50,7 +47,7 @@ html, body {
   color: white;
   z-index: 1;
   max-width: 80%;
-  text-align: center; /* Center teks secara horizontal */
+  text-align: center; 
   letter-spacing: 0.3px;
 }
 
@@ -65,19 +62,18 @@ html, body {
   opacity: 0.9;
 }
 
-/* --- BAGIAN KANAN (FORM) --- */
 .login-right {
-  flex: 1; /* Ambil 50% lebar */
+  flex: 1; 
   display: flex;
-  justify-content: center; /* Tengah horizontal */
-  align-items: center; /* Tengah vertikal */
+  justify-content: center; 
+  align-items: center; 
   background-color: white;
   padding: 40px;
 }
 
 .form-box {
   width: 100%;
-  max-width: 400px; /* Batasi lebar form biar gak kegedean */
+  max-width: 400px; 
 }
 
 .form-box h2 {
@@ -87,7 +83,6 @@ html, body {
   color: #333;
 }
 
-/* Styling Input */
 .input-group {
   margin-bottom: 20px;
 }
@@ -104,23 +99,52 @@ html, body {
   width: 100%;
   padding: 12px 15px;
   border: 1px solid #ddd;
-  background-color: #f9f9f9; /* Warna abu muda sesuai desain */
+  background-color: #f9f9f9; 
   border-radius: 8px;
   font-size: 1rem;
   outline: none;
-  color: #333; /* Pastikan teks input gelap supaya terlihat di background terang */
-  caret-color: #333; /* Pastikan kursor (caret) terlihat */
+  color: #9aa0a6; 
+  caret-color: #9aa0a6; 
 }
 
 .input-group input::placeholder {
-  color: #9aa0a6; /* Placeholder lebih gelap agar terbaca */
+  color: #9aa0a6; 
 }
 
 .input-group input:focus {
-  border-color: #e67e22; /* Warna orange saat diklik */
+  border-color: #e67e22; 
   background-color: white;
-  color: #333;
-  caret-color: #333;
+  color: #9aa0a6;
+  caret-color: #9aa0a6;
+}
+
+.input-wrapper {
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+
+.input-wrapper input {
+  padding-right: 40px; 
+}
+
+.eye-icon {
+  position: absolute;
+  right: 10px;
+  cursor: pointer;
+  color: #888;
+  background: none;
+  border: none;
+  display: flex;
+  align-items: center;
+}
+
+.eye-icon:hover {
+  color: #e67e22; 
+}
+
+.input-wrapper button:focus {
+  outline: none;
 }
 
 .terms span {
@@ -129,11 +153,10 @@ html, body {
   text-align: justify;
 }
 
-/* Tombol Orange */
 .btn-primary {
   width: 100%;
   padding: 14px;
-  background-color: #e67e22; /* Sesuai warna tombol di Figma */
+  background-color: #e67e22; 
   color: white;
   border: none;
   border-radius: 8px;
@@ -148,7 +171,6 @@ html, body {
   background-color: #d35400;
 }
 
-/* Checkbox Terms */
 .terms {
   display: flex;
   align-items: flex-start;
@@ -175,18 +197,16 @@ html, body {
   cursor: pointer;
 }
 
-/* Role selector styles */
 .role-group {
   display: flex;
   gap: 16px;
   align-items: flex-start;
   margin-bottom: 12px;
   flex-wrap: wrap;
-  width: 100%; /* make the role group span the form width */
+  width: 100%; 
 }
 
 .role-group input[type="radio"] {
-  /* hide native radio */
   display: none;
 }
 
@@ -195,8 +215,8 @@ html, body {
   align-items: center;
   justify-content: space-between;
   gap: 12px;
-  flex: 1 1 0; /* allow cards to grow/shrink and share available space */
-  min-width: 0; /* prevent overflow */
+  flex: 1 1 0; 
+  min-width: 0; 
   padding: 14px 18px;
   border-radius: 8px;
   border: 1px solid #e6e6e6;
@@ -215,7 +235,7 @@ html, body {
   width: 14px;
   height: 14px;
   border-radius: 50%;
-  background: #e9ecef; /* default gray */
+  background: #e9ecef; 
   border: 2px solid #f1f1f1;
 }
 
@@ -226,7 +246,7 @@ html, body {
 }
 
 .role-option.selected .role-dot {
-  background: #e67e22; /* orange filled dot */
+  background: #e67e22; 
   border-color: #e67e22;
 }
 
@@ -238,10 +258,6 @@ html, body {
   text-align: justify;
 }
 
-/* BAGIAN DASHBOARD */
-/* --- DASHBOARD STYLES --- */
-
-/* Navbar */
 .navbar {
   display: flex;
   justify-content: space-between;
@@ -285,14 +301,13 @@ html, body {
 }
 .btn-logout {
   padding: 10px 20px;
-  background-color: #e74c3c; /* Merah untuk logout */
+  background-color: #e74c3c; 
   color: white;
   border: none;
   border-radius: 5px;
   cursor: pointer;
 }
 
-/* Hero Section */
 .hero {
   background-image: url('./photos/background.png');
   background-size: cover;
@@ -341,13 +356,12 @@ html, body {
   font-weight: bold;
 }
 
-/* Stats Section */
 .stats {
   display: flex;
   justify-content: space-around;
   padding: 60px 50px;
   text-align: center;
-  background-color: #ffffff; /* Warna cream tipis */
+  background-color: #ffffff; 
   flex-direction: column;
   align-items: center;
   gap: 30px;
@@ -380,7 +394,6 @@ html, body {
   max-width: 200px;
 }
 
-/* Property Section */
 .property-section {
   padding: 50px;
   text-align: center;
@@ -394,7 +407,7 @@ html, body {
 
 .property-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); /* Responsif Grid */
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); 
   gap: 30px;
 }
 
@@ -450,38 +463,35 @@ html, body {
   padding-top: 15px;
 }
 
-/* --- FOOTER STYLES --- */
 .footer {
-  background-color: #000000; /* Warna latar gelap (Dark Brown/Black) */
-  color: #e0e0e0; /* Warna teks abu terang */
+  background-color: #000000; 
+  color: #e0e0e0;   
   padding-top: 60px;
 }
 
 .footer-container {
   display: flex;
-  justify-content: space-between; /* Agar tersebar rata 4 kolom */
-  flex-wrap: wrap; /* Supaya aman di layar kecil */
-  padding: 0 60px 40px; /* Padding kiri-kanan */
+  justify-content: space-between; 
+  flex-wrap: wrap; 
+  padding: 0 60px 40px; 
   gap: 40px;
   max-width: 1400px;
   margin: 0 auto;
 }
 
-/* Style Per Kolom */
 .footer-col {
   min-width: 200px;
 }
 
 .brand-col {
-  flex: 1.5; /* Kolom pertama lebih lebar sedikit */
+  flex: 1.5; 
   padding-right: 20px;
 }
 
-/* Typography Footer */
 .footer-logo {
   width: 150px;
   margin-bottom: 20px;
-  filter: brightness(10); /* Trik biar logo hitam jadi putih (opsional) */
+  filter: brightness(10); 
 }
 
 .footer-desc {
@@ -512,11 +522,10 @@ html, body {
 }
 
 .footer-col ul li:hover {
-  color: #e67e22; /* Warna orange saat di-hover */
+  color: #e67e22; 
   transform: translateX(5px);
 }
 
-/* Social Icons */
 .social-icons {
   display: flex;
   gap: 15px;
@@ -535,7 +544,6 @@ html, body {
   transform: scale(1.1);
 }
 
-/* Subscribe Form */
 .subscribe-col p {
   font-size: 0.9rem;
   color: #aaa;
